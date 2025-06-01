@@ -1,5 +1,9 @@
-export default function Home() {
+import Header from './components/Header.tsx';
+
+const Home = () => {
   return (
-    <div>A Thing</div>
+    <Header />
   );
 }
+
+export default Home;
