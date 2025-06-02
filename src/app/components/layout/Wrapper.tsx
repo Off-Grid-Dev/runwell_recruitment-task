@@ -1,13 +1,15 @@
-import React, { ReactNode } from 'react';
+import { ReactNode, FC } from 'react';
 
 interface WrapperProps {
   children: ReactNode;
 }
 
-const Wrapper: React.FC<WrapperProps> = ({ children }) => (
-  <div className="max-w-wrapper-desktop w-full mx-auto">
-    {children}
-  </div>
-);
+const Wrapper: FC<WrapperProps> = ({ children }) => {
+  return (
+    <div className={`desktop:max-w-wrapper-desktop tablet:max-w-wrapper-tablet max-w-wrapper-mobile w-full mx-auto`}>
+      {children}
+    </div>
+  );
+};
 
 export default Wrapper;
