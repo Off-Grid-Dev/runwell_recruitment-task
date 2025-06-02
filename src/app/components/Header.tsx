@@ -1,11 +1,14 @@
-import Toolbar from './pieces/Toolbar';
+import TopNav from './pieces/TopNav.tsx';
+import Headline from './pieces/Headline.tsx';
+import Toolbar from './pieces/Toolbar.tsx';
 
 const Header = () => {
   return (
-    <div>¨
-      <h1>Messages</h1>
+    <header>
+      <TopNav />
+      <Headline />
       <Toolbar />
-    </div>
+    </header>
   )
 }
 

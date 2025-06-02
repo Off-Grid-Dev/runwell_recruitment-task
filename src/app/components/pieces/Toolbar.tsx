@@ -1,6 +1,10 @@
+import Wrapper from "../layout/Wrapper.tsx";
+
 const Toolbar = () => {
   return (
-    <div>Toolbar</div>
+    <Wrapper>
+      <span>Toolbar</span>
+    </Wrapper>
   )
 }
 
