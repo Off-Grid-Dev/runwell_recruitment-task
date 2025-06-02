@@ -16,11 +16,26 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #111827;
-  --color-primary-200: #312E81;
-  --color-primary-600: #4F46E5;
+  --color-primary-50: #EEF2FF;
+  --color-primary-100: #c8d5fe;
+  --color-primary-400: #4F46E5;
+  --color-primary-600: #312E81;
 
-  --spacing-wrapper-desktop: 1140px;
+  --spacing-wrapper-desktop: 1400px;
   --spacing-wrapper-mobile: 430px;
 
+  --breakpoint-pad: 1040px;
+  --breakpoint-mob: 480px;
+
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+@layer components {
+  .top-nav {
+    @apply px-[24px] pt-[8px] pb-[6px] grid grid-cols-12 bg-slate-50;
+
+    .cta {
+      @apply bg-primary-50 hover:bg-primary-100 inline-grid place-content-center w-8 aspect-square rounded-full cursor-pointer transition-colors duration-300;
+    }
+  }
 }
