@@ -1,6 +1,6 @@
-import TopNav from './pieces/TopNav.tsx';
-import Headline from './pieces/Headline.tsx';
-import Toolbar from './pieces/Toolbar.tsx';
+import TopNav from './header/TopNav.tsx';
+import Headline from './header/Headline.tsx';
+import Toolbar from './header/Toolbar.tsx';
 
 const Header = () => {
   return (
