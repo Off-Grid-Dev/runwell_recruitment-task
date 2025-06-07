@@ -27,22 +27,24 @@ const getNow = () => {
 };
 
 const Home: FC = () => {
-  const [posts, setPosts] = useState<PostData[]>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('posts');
-      if (stored) return JSON.parse(stored);
-    }
-    return mockPostData;
-  });
+  const [posts, setPosts] = useState<PostData[]>(mockPostData);
   const [showForm, setShowForm] = useState(false);
   const [editIdx, setEditIdx] = useState<number | null>(null);
 
-  // Persist posts to localStorage on change
+  // Persist posts to localStorage on change (client only)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('posts', JSON.stringify(posts));
     }
   }, [posts]);
+
+  // On mount, load posts from localStorage (client only)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('posts');
+      if (stored) setPosts(JSON.parse(stored));
+    }
+  }, []);
 
   const handleCreate = (data: { title: string; content: string | string[] }) => {
     const now = getNow();
