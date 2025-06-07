@@ -18,7 +18,7 @@
 - [ ] Filtering/search bar for post name
 - [ ] Pagination or infinite scroll (load posts in chunks)
 - [ ] Delete confirmation popup
-- [ ] Use Tailwind CSS for styling (in progress)
+- [x] Use Tailwind CSS for styling (in progress)
 - [ ] Use React Query for data fetching/mutations
 - [ ] Responsive/mobile-friendly design
 - [ ] Handle create/delete in a popup/modal
@@ -34,7 +34,7 @@
 ## Other
 
 - [ ] Add README with instructions
-- [ ] Use provided mockups for UI (if available)
+- [x] Use provided mockups for UI (if available)
 
 ---
 
