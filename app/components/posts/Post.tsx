@@ -16,14 +16,17 @@ interface PostProps {
 
 const Post: FC<PostProps> = ({ postData }) => {
   return (
-    <div className='flex flex-col justify-start mr-auto w-[450px] py-[12px] px-[16px] rounded-[20px] border border-gray-200'>
-      <h2 className='text-2xl font-semibold'>{postData.title}</h2>
+    <div className='flex flex-col relative justify-start mr-auto w-[450px] py-[12px] px-[16px] rounded-[20px] border border-gray-200'>
+      <h2 className='text-2xl font-semibold mb-2'>{postData.title}</h2>
+      <button className='absolute top-4 right-4 cursor-pointer hover:bg-primary-100 p-1 rounded-full hover:transition-colors hover:duration-200'>
+        <img src="./assets/elipses.svg" alt="open options" />
+      </button>
       <p className='text-sm'>{postData.dateCreated}({postData.timeCreated})
         <span className='text-primary-400'>{postData.edit && ` Edited: ${postData.dateEdit}(${postData.timeEdit})`}</span></p>
       <div>
         {Array.isArray(postData.content)
           ? postData.content.map((line, idx) => <p key={idx}>{line}</p>)
-          : <p>{postData.content}</p>}
+          : <p className='text-[16px]'>{postData.content}</p>}
       </div>
     </div>
   );
