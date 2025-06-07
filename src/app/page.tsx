@@ -5,7 +5,6 @@ import Header from './components/Header.tsx';
 import Main from './components/Main.tsx';
 import Post from './components/posts/Post.tsx';
 import PostForm from './components/posts/PostForm';
-import mockPostData from './mockData/postData.json' assert {type: "json"};
 
 interface PostData {
   title: string;
@@ -27,7 +26,13 @@ const getNow = () => {
 };
 
 const Home: FC = () => {
-  const [posts, setPosts] = useState<PostData[]>(mockPostData);
+  const [posts, setPosts] = useState<PostData[]>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('posts');
+      if (stored) return JSON.parse(stored);
+    }
+    return [];
+  });
   const [showForm, setShowForm] = useState(false);
   const [editIdx, setEditIdx] = useState<number | null>(null);
 
@@ -37,14 +42,6 @@ const Home: FC = () => {
       localStorage.setItem('posts', JSON.stringify(posts));
     }
   }, [posts]);
-
-  // On mount, load posts from localStorage (client only)
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('posts');
-      if (stored) setPosts(JSON.parse(stored));
-    }
-  }, []);
 
   const handleCreate = (data: { title: string; content: string | string[] }) => {
     const now = getNow();
