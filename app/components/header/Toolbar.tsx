@@ -19,11 +19,11 @@ const Toolbar = ({ onNewPost }: { onNewPost: () => void }) => {
         </button>
         <div className='relative bg-gray-100 py-[8px] px-[24px] rounded-full' aria-label="search through posts">
           <input type="text" placeholder='Search' className='peer placeholder:px-[20px] focus:placeholder:opacity-0 outline-none' maxLength={32} />
-          <img className='absolute top-[12px] left-[12px] peer-focus:opacity-0' src="./assets/search.png" />
+          <img className='absolute top-[12px] left-[12px] peer-focus:opacity-0' src="./assets/search.svg" />
         </div>
         <div className='flex align-middle my-auto gap-2'>
           <p>Date</p>
-          <img className="inline-block m-auto" src="./assets/sort-selector.png" alt="sort items" />
+          <img className="inline-block m-auto" src="./assets/sort-selector.svg" alt="sort items" />
         </div >
       </div>
     </Wrapper>

@@ -5,24 +5,24 @@ const TopNav = () => {
     <div className='top-nav'>
       <div className='col-span-1'>
         <Link className="grid align-bottom" href={'/'}>
-          <img src="./assets/runwell-logo_dark.png" alt="runwell logo" />
+          <img src="./assets/runwell-logo_dark.svg" alt="runwell logo" />
         </Link>
       </div>
       <div className='col-span-5 col-start-4 flex justify-evenly'>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
-          <img src="./assets/home.png" alt="return home" />
+          <img src="./assets/home.svg" alt="return home" />
         </button>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
-          <img src="./assets/my-tasks.png" alt="see your tasks" />
+          <img src="./assets/my-tasks.svg" alt="see your tasks" />
         </button>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
-          <img src="./assets/clock.png" alt="check schedule" />
+          <img src="./assets/clock.svg" alt="check schedule" />
         </button>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
-          <img src="./assets/academic.png" />
+          <img src="./assets/academic.svg" />
         </button>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
-          <img src="./assets/chat.png" alt="start chat" />
+          <img src="./assets/chat.svg" alt="start chat" />
         </button>
       </div>
       <div className='col-span-2 col-start-10 flex justify-evenly'>
@@ -30,10 +30,10 @@ const TopNav = () => {
           <span className="text-primary-400 scale-175 origin-center relative -top-[3px]">+</span>
         </button>
         <button className='cta'>
-          <img src="./assets/bell.png" />
+          <img src="./assets/bell.svg" />
         </button>
         <button className='cta'>
-          <img src="./assets/apps.png" />
+          <img src="./assets/apps.svg" />
         </button>
       </div>
     </div>
