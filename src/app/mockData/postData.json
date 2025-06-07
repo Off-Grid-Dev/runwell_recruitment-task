@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Say hi to our new empoyee!",
+    "dateCreated": "12.05.25",
+    "timeCreated": "11:20",
+    "dateEdit": "13.05.25",
+    "timeEdit": "12:35",
+    "content": "We're excited to welcome Runbot as a new member of the Runwell team.",
+    "edit": true
+  },
+  {
+    "title": "Say hi to our newest team member -Runbot!",
+    "dateCreated": "10.05.25",
+    "timeCreated": "10:05",
+    "dateEdit": "12.05.25",
+    "timeEdit": "12:00",
+    "content": [
+      "We're thrilled to introduce Runbot, the latest addition to the Runwell team!",
+      "While he may not need coffee breaks or team lunches, Runbot is here to make our workflows smoother and our days a little easier. Built to support our operations and automate the boring stuff, he's already hard at work behind the scenes.",
+      "Help us give him a proper welcome — drop a 👋 or your favorite emoji reaction below!"
+    ],
+    "edit": true
+  }
+]
