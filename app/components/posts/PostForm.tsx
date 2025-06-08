@@ -1,23 +1,7 @@
 "use client";
 
 import { FC, useState, useRef, useEffect } from 'react';
-
-interface PostData {
-  title: string;
-  dateCreated: string;
-  timeCreated: string;
-  dateEdit: string;
-  timeEdit: string;
-  content: string | string[];
-  edit: boolean;
-}
-
-interface PostFormProps {
-  initialData?: Partial<PostData>;
-  onSubmit: (data: Omit<PostData, 'dateCreated' | 'timeCreated' | 'dateEdit' | 'timeEdit' | 'edit'>) => void;
-  onCancel?: () => void;
-  isEdit?: boolean;
-}
+import { PostFormProps } from '../../types';
 
 const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isEdit }) => {
   const [title, setTitle] = useState(initialData.title || '');

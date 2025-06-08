@@ -1,12 +1,13 @@
 "use client";
 
 import Wrapper from "../layout/Wrapper";
+import { HeaderProps } from '../../types';
 
 /**
  * Toolbar component for the header. Contains new post button, search, and sort.
  * @param onNewPost - Callback to trigger new post creation.
  */
-const Toolbar = ({ onNewPost }: { onNewPost: () => void }) => {
+const Toolbar = ({ onNewPost }: HeaderProps) => {
   return (
     <Wrapper>
       <div className="flex sm:justify-start justify-end w-full align-self-bottom sm:align-middle min-h-min relative top-[26px] sm:static gap-[24px]">

@@ -1,21 +1,5 @@
-import { FC, ReactNode } from 'react';
-
-interface PostData {
-  title: string;
-  dateCreated: string;
-  timeCreated: string;
-  dateEdit: string;
-  timeEdit: string;
-  content: string | string[];
-  edit: boolean;
-}
-
-interface PostProps {
-  postData: PostData;
-  children: ReactNode;
-  isOptionsOpen: boolean;
-  setIsOptionsOpen: (open: boolean) => void;
-}
+import { FC } from 'react';
+import { PostProps } from '../../types';
 
 /**
  * Post component for displaying a single post and its options.
