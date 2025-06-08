@@ -30,6 +30,7 @@ const Home: FC = () => {
   const [posts, setPosts] = useState<PostData[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editIdx, setEditIdx] = useState<number | null>(null);
+  const [openOptionsIdx, setOpenOptionsIdx] = useState<number | null>(null);
 
   // On mount, load posts from localStorage or initialize with mockData if empty
   useEffect(() => {
@@ -110,27 +111,36 @@ const Home: FC = () => {
           />
         )}
         <div className="flex flex-col gap-4">
-          {posts.map((post, idx) => (
-            <div key={idx} className="relative group">
-              <Post postData={post} />
-              <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button
-                  className="p-2 bg-red-500 text-white rounded hover:bg-red-700 transition-colors"
-                  onClick={() => handleDelete(idx)}
-                  aria-label="Delete post"
-                >
-                  Delete
-                </button>
-                <button
-                  className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors"
-                  onClick={() => handleEdit(idx)}
-                  aria-label="Edit post"
-                >
-                  Edit
-                </button>
+          {posts.map((post, idx) => {
+            const isOpen = openOptionsIdx === idx;
+            return (
+              <div key={idx} className="relative group">
+                <Post
+                  postData={post}
+                  isOptionsOpen={isOpen}
+                  setIsOptionsOpen={(open) => setOpenOptionsIdx(open ? idx : null)}
+                />
+                {isOpen && (
+                  <div className="absolute top-2 right-2 flex gap-2 opacity-100 transition-opacity">
+                    <button
+                      className="p-2 bg-red-500 text-white rounded hover:bg-red-700 transition-colors"
+                      onClick={() => handleDelete(idx)}
+                      aria-label="Delete post"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors"
+                      onClick={() => handleEdit(idx)}
+                      aria-label="Edit post"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Main>
     </>
