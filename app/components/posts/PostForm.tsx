@@ -40,28 +40,32 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 border rounded-xl bg-white shadow-md max-w-md mx-auto">
-      <h3 className="text-lg font-bold">{isEdit ? 'Edit Post' : 'Create New Post'}</h3>
-      <input
-        className="border rounded px-2 py-1"
-        placeholder="Title"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-        required
-      />
-      <textarea
-        className="border rounded px-2 py-1 min-h-[80px]"
-        placeholder="Description"
-        value={content}
-        onChange={e => setContent(e.target.value)}
-        required
-      />
-      {error && <span className="text-red-500 text-sm">{error}</span>}
-      <div className="flex gap-2 justify-end">
-        {onCancel && <button type="button" className="px-3 py-1 rounded bg-gray-200" onClick={onCancel}>Cancel</button>}
-        <button type="submit" className="px-3 py-1 rounded bg-primary-400 text-white">{isEdit ? 'Update' : 'Create'}</button>
-      </div>
-    </form>
+    <div className='fixed inset-0 grid place-content-center bg-primary-modal backdrop-blur-xs z-50'>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 relative rounded-xl bg-white shadow-md mx-auto">
+        <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">{isEdit ? 'Edit Post' : 'Create New Post'}</h3>
+        <div className='relative'>
+          <label className='absolute left-2 -top-2 text-xs bg-white px-1' htmlFor="formTitle">Title</label>
+          <input
+            id='formTitle'
+            className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 w-full transition-colors duration-200"
+            placeholder="Title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <textarea
+          className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 min-h-[76px] w-[342px] transition-colors duration-200"
+          placeholder="Description"
+          value={content}
+          onChange={e => setContent(e.target.value)}
+          required
+        />
+        {onCancel && <button onClick={onCancel} type='button' className='absolute top-3 right-3 hover:opacity-50 cursor-pointer hover:transition-opacity'><img src="./assets/close-x.svg" alt="close window" /></button>}
+        {error && <span className="text-red-500 text-sm">{error}</span>}
+        <button type="submit" className="py-1 w-full rounded bg-primary-400 hover:bg-primary-600 transition-colors cursor-pointer text-white">{isEdit ? 'Save' : 'Create'}</button>
+      </form>
+    </div>
   );
 };
 
