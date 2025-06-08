@@ -10,12 +10,14 @@
 
   body {
     box-sizing: border-box;
+    color: #312e81c3;
   }
 }
 
 @theme {
   --color-background: #ffffff;
   --color-foreground: #111827;
+  --color-primary-modal: #312e81c3;
   --color-primary-50: #EEF2FF;
   --color-primary-100: #c8d5fe;
   --color-primary-400: #4F46E5;
@@ -26,10 +28,10 @@
 
   --spacing-wrapper-desktop: 1400px;
   --spacing-wrapper-tablet: 980px;
-  --spacing-wrapper-mobile: 430px;
+  --spacing-wrapper-mobile: 480px;
 
   --breakpoint-desktop: 1060px;
-  --breakpoint-tablet: 480px;
+  --breakpoint-tablet: 590px;
 
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
