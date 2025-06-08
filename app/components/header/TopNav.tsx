@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+/**
+ * Top navigation bar for the app, including logo and navigation buttons.
+ */
 const TopNav = () => {
   return (
     <div className='top-nav'>

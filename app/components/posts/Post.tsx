@@ -17,6 +17,13 @@ interface PostProps {
   setIsOptionsOpen: (open: boolean) => void;
 }
 
+/**
+ * Post component for displaying a single post and its options.
+ * @param postData - The data for the post to display.
+ * @param children - Any child elements (e.g., options menus).
+ * @param isOptionsOpen - Whether the options menu is open for this post.
+ * @param setIsOptionsOpen - Callback to open/close the options menu.
+ */
 const Post: FC<PostProps> = ({ postData, children, isOptionsOpen, setIsOptionsOpen }) => {
   return (
     <div className='flex flex-col relative justify-start w-full max-w-full sm:mx-2 py-2 px-2 rounded-[20px] border border-gray-200 sm:w-[450px] sm:max-w-[95vw] sm:py-[12px] sm:px-[16px]'>

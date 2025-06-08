@@ -1,7 +1,11 @@
 "use client";
 
-import Wrapper from "../layout/Wrapper.tsx";
+import Wrapper from "../layout/Wrapper";
 
+/**
+ * Toolbar component for the header. Contains new post button, search, and sort.
+ * @param onNewPost - Callback to trigger new post creation.
+ */
 const Toolbar = ({ onNewPost }: { onNewPost: () => void }) => {
   return (
     <Wrapper>

@@ -6,18 +6,13 @@ import Main from './components/Main.tsx';
 import Post from './components/posts/Post.tsx';
 import PostForm from './components/posts/PostForm';
 import mockPostData from './mockData/postData.json';
+import { PostData } from './types';
 
-interface PostData {
-  title: string;
-  dateCreated: string;
-  timeCreated: string;
-  dateEdit: string;
-  timeEdit: string;
-  content: string | string[];
-  edit: boolean;
-  showDeleteConfirm?: boolean;
-}
-
+// Utility: getNow (date/time helper)
+/**
+* Returns the current date and time in the required format for posts.
+* @returns An object with date (DD.MM.YY) and time (HH:mm) strings.
+*/
 const getNow = () => {
   const now = new Date();
   const pad = (n: number) => n.toString().padStart(2, '0');
@@ -27,12 +22,20 @@ const getNow = () => {
   };
 };
 
+/**
+ * Main Home component for the posts app. Handles state, CRUD, and rendering.
+ * Loads posts from localStorage or mock data, and persists changes.
+ */
 const Home: FC = () => {
   const [posts, setPosts] = useState<PostData[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editIdx, setEditIdx] = useState<number | null>(null);
   const [openOptionsIdx, setOpenOptionsIdx] = useState<number | null>(null);
 
+  // Effects: Load and persist posts
+  /**
+   * Loads posts from localStorage or mock data on mount.
+   */
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('posts');
@@ -45,12 +48,20 @@ const Home: FC = () => {
     }
   }, []);
 
+  /**
+   * Persists posts to localStorage whenever posts state changes.
+   */
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('posts', JSON.stringify(posts));
     }
   }, [posts]);
 
+  // CRUD Handlers
+  /**
+   * Creates a new post and adds it to the top of the posts list.
+   * @param data - The title and content for the new post.
+   */
   const handleCreate = (data: { title: string; content: string | string[] }) => {
     const now = getNow();
     setPosts([
@@ -68,8 +79,16 @@ const Home: FC = () => {
     setShowForm(false);
   };
 
+  /**
+   * Sets the index of the post to edit.
+   * @param idx - The index of the post to edit.
+   */
   const handleEdit = (idx: number) => setEditIdx(idx);
 
+  /**
+   * Updates an existing post with new data.
+   * @param data - The updated title and content for the post.
+   */
   const handleUpdate = (data: { title: string; content: string | string[] }) => {
     if (editIdx === null) return;
     const now = getNow();
@@ -90,10 +109,15 @@ const Home: FC = () => {
     setEditIdx(null);
   };
 
+  /**
+   * Deletes a post at the given index.
+   * @param idx - The index of the post to delete.
+   */
   const handleDelete = (idx: number) => {
     setPosts(posts => posts.filter((_, i) => i !== idx));
   };
 
+  // Render
   return (
     <>
       <Header onNewPost={() => setShowForm(true)} />
