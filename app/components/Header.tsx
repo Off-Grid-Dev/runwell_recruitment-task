@@ -1,4 +1,4 @@
-import TopNav from './header/TopNav.tsx';
+// import TopNav from './header/TopNav.tsx';
 import Headline from './header/Headline.tsx';
 import Toolbar from './header/Toolbar.tsx';
 import React from 'react';
@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onNewPost }) => {
   return (
     <header>
-      <TopNav />
+      {/* <TopNav /> */}
       <Headline />
       <Toolbar onNewPost={onNewPost} />
     </header>
