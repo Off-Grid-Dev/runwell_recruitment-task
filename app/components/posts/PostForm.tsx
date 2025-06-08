@@ -109,7 +109,7 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
           required
         />
         {error && <span className="text-red-500 text-sm">{error}</span>}
-        <button type="submit" className="py-1 w-full rounded bg-primary-400 hover:bg-primary-600 transition-colors cursor-pointer text-white">{isEdit ? 'Save' : 'Create'}</button>
+        <button type="submit" className="py-1 w-full sm:rounded rounded-full bg-primary-400 hover:bg-primary-600 transition-colors cursor-pointer text-white">{isEdit ? 'Save' : 'Create'}</button>
       </form>
     </div>
   );

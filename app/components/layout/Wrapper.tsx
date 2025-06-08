@@ -6,7 +6,7 @@ interface WrapperProps {
 
 const Wrapper: FC<WrapperProps> = ({ children }) => {
   return (
-    <div className='desktop:max-w-wrapper-desktop tablet:max-w-wrapper-tablet max-w-wrapper-mobile w-full mx-auto sm:px-[48px] px-2'>
+    <div className='desktop:max-w-wrapper-desktop tablet:max-w-wrapper-tablet max-w-wrapper-mobile w-full mx-auto sm:px-[48px] px-3'>
       {children}
     </div>
   );

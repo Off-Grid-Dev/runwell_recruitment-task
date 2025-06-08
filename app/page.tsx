@@ -121,30 +121,71 @@ const Home: FC = () => {
                   setIsOptionsOpen={(open) => setOpenOptionsIdx(open ? idx : null)}
                 >
                   {isOpen && (
-                    <div className="absolute top-2 -right-20 flex flex-col gap-2 p-2 border-[1px] border-gray-100 drop-shadow-sm shadow-gray-500 rounded-md bg-white">
-                      <button
-                        className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
-                        onClick={() => {
-                          handleDelete(idx);
-                          setOpenOptionsIdx(null);
-                        }}
-                        aria-label="Delete post"
+                    <>
+                      {/* Desktop options */}
+                      <div className="hidden sm:absolute sm:top-2 sm:-right-20 sm:flex sm:flex-col sm:gap-2 sm:p-2 sm:border-[1px] sm:border-gray-100 sm:drop-shadow-sm sm:shadow-gray-500 sm:rounded-md sm:bg-white">
+                        <button
+                          className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
+                          onClick={() => {
+                            handleDelete(idx);
+                            setOpenOptionsIdx(null);
+                          }}
+                          aria-label="Delete post"
+                        >
+                          <img src="./assets/pencil-edit.svg" />
+                          Delete
+                        </button>
+                        <button
+                          className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
+                          onClick={() => {
+                            handleEdit(idx);
+                            setOpenOptionsIdx(null);
+                          }}
+                          aria-label="Edit post"
+                        >
+                          <img src="./assets/trash.svg" />
+                          Edit
+                        </button>
+                      </div>
+                      {/* Mobile options drawer/modal */}
+                      <div
+                        className={`sm:hidden fixed inset-0 z-50 grid bg-primary-modal backdrop-blur-xs transition-all duration-300`}
                       >
-                        <img src="./assets/pencil-edit.svg" />
-                        Delete
-                      </button>
-                      <button
-                        className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
-                        onClick={() => {
-                          handleEdit(idx);
-                          setOpenOptionsIdx(null);
-                        }}
-                        aria-label="Edit post"
-                      >
-                        <img src="./assets/trash.svg" />
-                        Edit
-                      </button>
-                    </div>
+                        <div
+                          className={`flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto animate-slideup`}
+                        >
+                          <button
+                            className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
+                            onClick={() => {
+                              handleDelete(idx);
+                              setOpenOptionsIdx(null);
+                            }}
+                            aria-label="Delete post"
+                          >
+                            <img src="./assets/pencil-edit.svg" />
+                            Delete
+                          </button>
+                          <button
+                            className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
+                            onClick={() => {
+                              handleEdit(idx);
+                              setOpenOptionsIdx(null);
+                            }}
+                            aria-label="Edit post"
+                          >
+                            <img src="./assets/trash.svg" />
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => setOpenOptionsIdx(null)}
+                            className="absolute top-3 right-3 hover:opacity-50 cursor-pointer hover:transition-opacity z-10"
+                            aria-label="Close options"
+                          >
+                            <img src="/assets/close-x.svg" alt="close options" />
+                          </button>
+                        </div>
+                      </div>
+                    </>
                   )}
                 </Post>
               </div>
