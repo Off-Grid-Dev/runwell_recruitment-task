@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 interface PostData {
   title: string;
@@ -12,11 +12,12 @@ interface PostData {
 
 interface PostProps {
   postData: PostData;
+  children: ReactNode;
   isOptionsOpen: boolean;
   setIsOptionsOpen: (open: boolean) => void;
 }
 
-const Post: FC<PostProps> = ({ postData, isOptionsOpen, setIsOptionsOpen }) => {
+const Post: FC<PostProps> = ({ postData, children, isOptionsOpen, setIsOptionsOpen }) => {
   return (
     <div className='flex flex-col relative justify-start mr-auto w-[450px] py-[12px] px-[16px] rounded-[20px] border border-gray-200'>
       <h2 className='text-2xl font-semibold mb-2'>{postData.title}</h2>
@@ -33,6 +34,7 @@ const Post: FC<PostProps> = ({ postData, isOptionsOpen, setIsOptionsOpen }) => {
           ? postData.content.map((line, idx) => <p key={idx}>{line}</p>)
           : <p className='text-[16px]'>{postData.content}</p>}
       </div>
+      {children}
     </div>
   );
 };
