@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onNewPost }) => {
   return (
-    <header>
+    <header className="flex justify-between align-bottom sm:block">
       {/* <TopNav /> */}
       <Headline />
       <Toolbar onNewPost={onNewPost} />

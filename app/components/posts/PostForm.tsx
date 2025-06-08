@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from 'react';
+import { FC, useState, useRef, useEffect } from 'react';
 
 interface PostData {
   title: string;
@@ -25,6 +25,8 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
     typeof initialData.content === 'string' ? initialData.content : Array.isArray(initialData.content) ? initialData.content.join('\n') : ''
   );
   const [error, setError] = useState('');
+  const [isClosing, setIsClosing] = useState(false);
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,15 +41,61 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
     });
   };
 
+  const handleClose = () => {
+    if (window.innerWidth < 640 && !isClosing) { // Only animate on mobile
+      setIsClosing(true);
+      closeTimeout.current = setTimeout(() => {
+        setIsClosing(false);
+        if (onCancel) onCancel();
+      }, 300); // match animation duration
+    } else {
+      if (onCancel) onCancel();
+    }
+  };
+
+  // Clean up timeout if unmounted early
+  useEffect(() => {
+    return () => {
+      if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    };
+  }, []);
+
   return (
-    <div className='fixed inset-0 grid place-content-center bg-primary-modal backdrop-blur-xs z-50'>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 relative rounded-xl bg-white shadow-md mx-auto">
-        <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">{isEdit ? 'Edit Post' : 'Create New Post'}</h3>
+    <div
+      className={
+        // Responsive modal: drawer on mobile, centered on tablet+
+        'fixed inset-0 z-50 grid sm:place-content-center bg-primary-modal backdrop-blur-xs' +
+        ' transition-all duration-300' +
+        ' sm:px-0' + // Only padding on sm+
+        ' [&>*]:transition-all [&>*]:duration-300'
+      }
+    >
+      <form
+        className={
+          'flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto' +
+          ' sm:static sm:rounded-xl sm:w-[380px] sm:max-w-[95vw] sm:mx-auto sm:left-auto sm:p-4' +
+          ' transition-transform duration-300' +
+          (isClosing ? ' animate-slidedown sm:animate-none' : ' animate-slideup sm:animate-none')
+        }
+        onSubmit={handleSubmit}
+      >
+        <div className='relative'>
+          <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">{isEdit ? 'Edit Post' : 'Create New Post'}</h3>
+          {onCancel && (
+            <button
+              onClick={handleClose}
+              type='button'
+              className='absolute top-2 sm:top-0 right-2 hover:opacity-50 cursor-pointer hover:transition-opacity'
+            >
+              <img src="/assets/close-x.svg" alt="close window" />
+            </button>
+          )}
+        </div>
         <div className='relative'>
           <label className='absolute left-2 -top-2 text-xs bg-white px-1' htmlFor="formTitle">Title</label>
           <input
             id='formTitle'
-            className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 w-full transition-colors duration-200"
+            className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 transition-colors duration-200 w-full sm:w-auto"
             placeholder="Title"
             value={title}
             onChange={e => setTitle(e.target.value)}
@@ -55,13 +103,12 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
           />
         </div>
         <textarea
-          className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 min-h-[76px] w-[342px] transition-colors duration-200"
+          className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 min-h-[76px] transition-colors duration-200 w-full sm:w-[342px]"
           placeholder="Description"
           value={content}
           onChange={e => setContent(e.target.value)}
           required
         />
-        {onCancel && <button onClick={onCancel} type='button' className='absolute top-3 right-3 hover:opacity-50 cursor-pointer hover:transition-opacity'><img src="./assets/close-x.svg" alt="close window" /></button>}
         {error && <span className="text-red-500 text-sm">{error}</span>}
         <button type="submit" className="py-1 w-full rounded bg-primary-400 hover:bg-primary-600 transition-colors cursor-pointer text-white">{isEdit ? 'Save' : 'Create'}</button>
       </form>

@@ -19,10 +19,11 @@ interface PostProps {
 
 const Post: FC<PostProps> = ({ postData, children, isOptionsOpen, setIsOptionsOpen }) => {
   return (
-    <div className='flex flex-col relative justify-start mr-auto w-[450px] py-[12px] px-[16px] rounded-[20px] border border-gray-200'>
+    <div className='flex flex-col relative justify-start w-full max-w-full mx-2 py-2 px-2 rounded-[20px] border border-gray-200 sm:w-[450px] sm:max-w-[95vw] sm:mx-0 sm:py-[12px] sm:px-[16px]'>
       <h2 className='text-2xl font-semibold mb-2'>{postData.title}</h2>
       <button
         onClick={() => setIsOptionsOpen(!isOptionsOpen)}
+        aria-label='open options'
         className='absolute top-4 right-4 cursor-pointer hover:bg-primary-100 p-1 rounded-full hover:transition-colors hover:duration-200'
       >
         <img src="./assets/elipses.svg" alt="open options" />

@@ -45,3 +45,37 @@
     }
   }
 }
+
+@layer utilities {
+  @media (max-width: 639px) {
+    .animate-slideup {
+      transform: translateY(100%);
+      animation: slideup 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .animate-slidedown {
+      transform: translateY(0);
+      animation: slidedown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes slideup {
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slidedown {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(100%);
+      }
+    }
+  }
+}
