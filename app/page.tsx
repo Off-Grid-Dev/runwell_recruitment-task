@@ -110,34 +110,43 @@ const Home: FC = () => {
             isEdit
           />
         )}
-        <div className="flex flex-col gap-4">
+        <div className={`flex flex-col gap-4 pointer-events-auto ${(showForm || (editIdx !== null)) && 'pointer-events-none'}`}>
           {posts.map((post, idx) => {
             const isOpen = openOptionsIdx === idx;
             return (
-              <div key={idx} className="relative group">
+              <div key={idx}>
                 <Post
                   postData={post}
                   isOptionsOpen={isOpen}
                   setIsOptionsOpen={(open) => setOpenOptionsIdx(open ? idx : null)}
-                />
-                {isOpen && (
-                  <div className="absolute top-2 right-2 flex gap-2 opacity-100 transition-opacity">
-                    <button
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-700 transition-colors"
-                      onClick={() => handleDelete(idx)}
-                      aria-label="Delete post"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors"
-                      onClick={() => handleEdit(idx)}
-                      aria-label="Edit post"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                )}
+                >
+                  {isOpen && (
+                    <div className="absolute top-2 -right-20 flex flex-col gap-2 p-2 border-[1px] border-gray-100 drop-shadow-sm shadow-gray-500 rounded-md bg-white">
+                      <button
+                        className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
+                        onClick={() => {
+                          handleDelete(idx);
+                          setOpenOptionsIdx(null);
+                        }}
+                        aria-label="Delete post"
+                      >
+                        <img src="./assets/pencil-edit.svg" />
+                        Delete
+                      </button>
+                      <button
+                        className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
+                        onClick={() => {
+                          handleEdit(idx);
+                          setOpenOptionsIdx(null);
+                        }}
+                        aria-label="Edit post"
+                      >
+                        <img src="./assets/trash.svg" />
+                        Edit
+                      </button>
+                    </div>
+                  )}
+                </Post>
               </div>
             );
           })}
