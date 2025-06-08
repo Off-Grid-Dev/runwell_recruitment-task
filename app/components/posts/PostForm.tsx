@@ -63,10 +63,9 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
   return (
     <div
       className={
-        // Responsive modal: drawer on mobile, centered on tablet+
         'fixed inset-0 z-50 grid sm:place-content-center bg-primary-modal backdrop-blur-xs' +
         ' transition-all duration-300' +
-        ' sm:px-0' + // Only padding on sm+
+        ' sm:px-0' +
         ' [&>*]:transition-all [&>*]:duration-300'
       }
     >
@@ -91,7 +90,7 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
             </button>
           )}
         </div>
-        <div className='relative'>
+        <div className='relative mt-2'>
           <label className='absolute left-2 -top-2 text-xs bg-white px-1' htmlFor="formTitle">Title</label>
           <input
             id='formTitle'
