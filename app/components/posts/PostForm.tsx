@@ -79,7 +79,7 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
         onSubmit={handleSubmit}
       >
         <div className='relative'>
-          <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">{isEdit ? 'Edit Post' : 'Create New Post'}</h3>
+          <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">{isEdit ? 'Edit message' : 'New message'}</h3>
           {onCancel && (
             <button
               onClick={handleClose}
