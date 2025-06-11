@@ -155,7 +155,7 @@ const Home: FC = () => {
                           }}
                           aria-label="Edit post"
                         >
-                          <img src="./assets/trash.svg" />
+                          <img src="./assets/trash.svg" alt='delete' />
                           Edit
                         </button>
                         <button
@@ -166,7 +166,7 @@ const Home: FC = () => {
                           }}
                           aria-label="Delete post"
                         >
-                          <img src="./assets/pencil-edit.svg" />
+                          <img src="./assets/pencil-edit.svg" alt='edit' />
                           Delete
                         </button>
                       </div>
@@ -177,7 +177,7 @@ const Home: FC = () => {
                         {openOptionsIdx === idx && openOptionsIdx !== null && openOptionsIdx === idx && posts[idx]?.showDeleteConfirm ? (
                           <div className={`flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto animate-slideup`}>
                             <div className='grid place-content-center w-12 h-12 mr-auto mb-2 p-3 aspect-square bg-red-300 rounded-full'>
-                              <img src="/assets/warning.svg" alt="Warning" className="" />
+                              <img src="/assets/warning.svg" alt="Warning" />
                             </div>
                             <div className='font-bold text-left'>Delete message?</div>
                             <div className="font-md text-left">Are you sure you want to delete the message? Once the message is deleted, it can not be restored or accessed again</div>
@@ -213,7 +213,7 @@ const Home: FC = () => {
                               }}
                               aria-label="Edit post"
                             >
-                              <img src="./assets/trash.svg" />
+                              <img src="./assets/trash.svg" alt='delete' />
                               Edit
                             </button>
                             <button
@@ -223,7 +223,7 @@ const Home: FC = () => {
                               }}
                               aria-label="Delete post"
                             >
-                              <img src="./assets/pencil-edit.svg" />
+                              <img src="./assets/pencil-edit.svg" alt='edit' />
                               Delete
                             </button>
                             <button

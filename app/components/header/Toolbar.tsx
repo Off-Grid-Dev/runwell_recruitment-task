@@ -21,7 +21,7 @@ const Toolbar = ({ onNewPost }: HeaderProps) => {
         </button>
         <div className='relative hidden sm:inline-block bg-gray-100 py-[8px] px-[24px] rounded-full cursor-not-allowed' aria-label="search through posts">
           <input type="text" placeholder='Search' className='peer placeholder:px-[20px] focus:placeholder:opacity-0 outline-none cursor-not-allowed' maxLength={32} />
-          <img className='absolute top-[12px] left-[12px] peer-focus:opacity-0' src="./assets/search.svg" />
+          <img className='absolute top-[12px] left-[12px] peer-focus:opacity-0' src="./assets/search.svg" alt="click to search" />
         </div>
         <button className='flex align-middle cursor-not-allowed w-2'>
           <img className="inline-block" src="./assets/sort-selector.svg" alt="sort items" />

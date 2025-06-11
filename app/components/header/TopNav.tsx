@@ -22,7 +22,7 @@ const TopNav = () => {
           <img src="./assets/clock.svg" alt="check schedule" />
         </button>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
-          <img src="./assets/academic.svg" />
+          <img src="./assets/academic.svg" alt="academic" />
         </button>
         <button className='hover:opacity-70 hover:duration-150 transition-opacity duration-300 cursor-pointer'>
           <img src="./assets/chat.svg" alt="start chat" />
@@ -33,10 +33,10 @@ const TopNav = () => {
           <span className="text-primary-400 scale-175 origin-center relative -top-[3px]">+</span>
         </button>
         <button className='cta'>
-          <img src="./assets/bell.svg" />
+          <img src="./assets/bell.svg" alt="notifications" />
         </button>
         <button className='cta'>
-          <img src="./assets/apps.svg" />
+          <img src="./assets/apps.svg" alt="view apps" />
         </button>
       </div>
     </div>
