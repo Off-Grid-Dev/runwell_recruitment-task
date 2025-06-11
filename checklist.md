@@ -17,12 +17,12 @@
 - [ ] Sorting options (by title, creation date)
 - [ ] Filtering/search bar for post name
 - [ ] Pagination or infinite scroll (load posts in chunks)
-- [ ] Delete confirmation popup
+- [x] Delete confirmation popup on mobile
 - [x] Use Tailwind CSS for styling (in progress)
 - [ ] Use React Query for data fetching/mutations
-- [ ] Responsive/mobile-friendly design
-- [ ] Handle create/delete in a popup/modal
-- [ ] Add animations to popups (Tailwind transitions)
+- [x] Responsive/mobile-friendly design
+- [x] Handle create/delete in a popup/modal
+- [x] Add animations to popups (Tailwind transitions)
 - [ ] Backend for storing posts (Next.js API, Express, or similar)
 - [ ] Connect frontend to backend via HTTP (React Query)
 
@@ -33,9 +33,9 @@
 
 ## Other
 
-- [ ] Add README with instructions
+- [x] Add README with instructions
 - [x] Use provided mockups for UI (if available)
 
 ---
 
-_Last updated: 2025-06-07_
+_Last updated: 2025-06-10_
