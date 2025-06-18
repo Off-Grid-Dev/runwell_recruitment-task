@@ -154,7 +154,7 @@ const Home: FC = () => {
                           }}
                           aria-label="Edit post"
                         >
-                          <img src="./assets/pencil-edit.svg" alt='delete' />
+                          <img src="./assets/pencil-edit.svg" alt='edit' />
                           Edit
                         </button>
                         <button
@@ -165,7 +165,7 @@ const Home: FC = () => {
                           }}
                           aria-label="Delete post"
                         >
-                          <img src="./assets/delete.svg" alt='edit' />
+                          <img src="./assets/trash.svg" alt='delete' />
                           Delete
                         </button>
                       </div>
