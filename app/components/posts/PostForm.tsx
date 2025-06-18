@@ -93,7 +93,6 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
           required
         />
         {error && <span className="text-red-500 text-sm">{error}</span>}
-        {/* Use React state for button color/disabled, not valid: */}
         <button
           type="submit"
           className={`py-1 w-full sm:rounded rounded-full transition-colors text-white ${title.trim() && content.trim()

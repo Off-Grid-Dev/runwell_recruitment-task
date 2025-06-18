@@ -117,7 +117,6 @@ const Home: FC = () => {
     setPosts(posts => posts.filter((_, i) => i !== idx));
   };
 
-  // Render
   return (
     <>
       <Header onNewPost={() => setShowForm(true)} />
@@ -148,25 +147,25 @@ const Home: FC = () => {
                       {/* Desktop options */}
                       <div className="hidden sm:absolute sm:top-2 sm:-right-20 sm:flex sm:flex-col sm:gap-2 sm:p-2 sm:border-[1px] sm:border-gray-100 sm:drop-shadow-sm sm:shadow-gray-500 sm:rounded-md sm:bg-white">
                         <button
-                          className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
+                          className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
                           onClick={() => {
                             handleEdit(idx);
                             setOpenOptionsIdx(null);
                           }}
                           aria-label="Edit post"
                         >
-                          <img src="./assets/trash.svg" alt='delete' />
+                          <img src="./assets/pencil-edit.svg" alt='delete' />
                           Edit
                         </button>
                         <button
-                          className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
+                          className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
                           onClick={() => {
                             handleDelete(idx);
                             setOpenOptionsIdx(null);
                           }}
                           aria-label="Delete post"
                         >
-                          <img src="./assets/pencil-edit.svg" alt='edit' />
+                          <img src="./assets/delete.svg" alt='edit' />
                           Delete
                         </button>
                       </div>
@@ -206,24 +205,24 @@ const Home: FC = () => {
                             className={`flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto animate-slideup`}
                           >
                             <button
-                              className="flex gap-2 rounded text-red-700 hover:opacity-70 transition-opacity cursor-pointer"
+                              className="flex gap-2 rounded hover:opacity-70 transition-opacity cursor-pointer"
                               onClick={() => {
                                 handleEdit(idx);
                                 setOpenOptionsIdx(null);
                               }}
                               aria-label="Edit post"
                             >
-                              <img src="./assets/trash.svg" alt='delete' />
+                              <img src="./assets/pencil-edit.svg" alt='edit' />
                               Edit
                             </button>
                             <button
-                              className="flex gap-2 rounded hover:opacity-50 transition-opacity cursor-pointer"
+                              className="flex gap-2 rounded text-red-700 hover:opacity-50 transition-opacity cursor-pointer"
                               onClick={() => {
                                 setPosts(posts => posts.map((p, i) => i === idx ? { ...p, showDeleteConfirm: true } : p));
                               }}
                               aria-label="Delete post"
                             >
-                              <img src="./assets/pencil-edit.svg" alt='edit' />
+                              <img src="./assets/trash.svg" alt='delete' />
                               Delete
                             </button>
                             <button
