@@ -1,4 +1,6 @@
 import { WrapperProps } from '../types';
+import Wrapper from './layout/Wrapper';
+
 
 /**
  * Main layout wrapper for the main content area.
@@ -7,9 +9,9 @@ import { WrapperProps } from '../types';
  */
 const Main = ({ children }: WrapperProps) => {
   return (
-    <div className="desktop:max-w-wrapper-desktop tablet:max-w-wrapper-tablet max-w-wrapper-mobile w-full mx-auto sm:px-[48px] px-3">
+    <Wrapper>
       <main className="grid gap-[24px] my-[24]">{children}</main>
-    </div>
+    </Wrapper>
   );
 };
 
