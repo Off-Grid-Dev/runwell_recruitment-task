@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Runwell - Your Posts",
-  description: "Easily showcase and organize your posts in a clean, elegant feed.",
+  title: 'Runwell - Your Posts',
+  description:
+    'Easily showcase and organize your posts in a clean, elegant feed.',
 };
 
 export default function RootLayout({

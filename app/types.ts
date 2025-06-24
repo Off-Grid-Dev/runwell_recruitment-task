@@ -33,7 +33,12 @@ export interface PostData {
  */
 export interface PostFormProps {
   initialData?: Partial<PostData>;
-  onSubmit: (data: Omit<PostData, 'dateCreated' | 'timeCreated' | 'dateEdit' | 'timeEdit' | 'edit'>) => void;
+  onSubmit: (
+    data: Omit<
+      PostData,
+      'dateCreated' | 'timeCreated' | 'dateEdit' | 'timeEdit' | 'edit'
+    >
+  ) => void;
   onCancel?: () => void;
   isEdit?: boolean;
 }

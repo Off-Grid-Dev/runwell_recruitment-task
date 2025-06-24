@@ -5,6 +5,7 @@ A modern, responsive React/Next.js app for managing posts/messages, built as a t
 ## Features
 
 ### Core
+
 - **Display all posts**: View a list of all posts/messages with title, content, and timestamps.
 - **Create post**: Add a new post with title and description. Creation and update dates are tracked.
 - **Edit post**: Update the title and description of an existing post. Edit timestamps are updated.
@@ -13,6 +14,7 @@ A modern, responsive React/Next.js app for managing posts/messages, built as a t
 - **State management**: Posts are stored in React state and persisted to localStorage.
 
 ### Bonus Features (Planned or Partial)
+
 - **Sorting options**: UI for sorting by title or creation date (logic not implemented).
 - **Filtering/search bar**: UI for searching posts by name (logic not implemented).
 - **Pagination/infinite scroll**: (not implemented)
@@ -25,6 +27,7 @@ A modern, responsive React/Next.js app for managing posts/messages, built as a t
 - **React Query for data fetching/mutations**: (not implemented)
 
 ## State Management
+
 - **React state**: Posts are stored in React state for the session.
 - **localStorage**: Posts are persisted to localStorage for persistence across reloads.
 - **React Query**: (planned, not implemented)
@@ -52,6 +55,7 @@ A modern, responsive React/Next.js app for managing posts/messages, built as a t
    Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Development Notes
+
 - All TypeScript interfaces are centralized in `app/types.ts`.
 - Tailwind classes are organized for clarity, with mobile and desktop variants separated.
 - All functions and components are documented with JSDoc comments.
@@ -59,6 +63,7 @@ A modern, responsive React/Next.js app for managing posts/messages, built as a t
 - Mock data is loaded if no posts are found in localStorage.
 
 ## To Do / Bonus
+
 - Sorting and filtering logic for posts
 - Pagination or infinite scroll
 - Backend API and React Query integration

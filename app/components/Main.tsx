@@ -1,7 +1,6 @@
 import { WrapperProps } from '../types';
 import Wrapper from './layout/Wrapper';
 
-
 /**
  * Main layout wrapper for the main content area.
  * Applies grid layout and vertical spacing.

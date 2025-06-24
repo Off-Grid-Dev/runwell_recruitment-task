@@ -1,12 +1,21 @@
-"use client";
+'use client';
 
 import { FC, useState, useRef, useEffect } from 'react';
 import { PostFormProps } from '../../types';
 
-const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isEdit }) => {
+const PostForm: FC<PostFormProps> = ({
+  initialData = {},
+  onSubmit,
+  onCancel,
+  isEdit,
+}) => {
   const [title, setTitle] = useState(initialData.title || '');
   const [content, setContent] = useState(
-    typeof initialData.content === 'string' ? initialData.content : Array.isArray(initialData.content) ? initialData.content.join('\n') : ''
+    typeof initialData.content === 'string'
+      ? initialData.content
+      : Array.isArray(initialData.content)
+        ? initialData.content.join('\n')
+        : ''
   );
   const [error, setError] = useState('');
   const [isClosing, setIsClosing] = useState(false);
@@ -26,7 +35,8 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
   };
 
   const handleClose = () => {
-    if (window.innerWidth < 640 && !isClosing) { // Only animate on mobile
+    if (window.innerWidth < 640 && !isClosing) {
+      // Only animate on mobile
       setIsClosing(true);
       closeTimeout.current = setTimeout(() => {
         setIsClosing(false);
@@ -58,30 +68,39 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
           'flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto' +
           ' sm:static sm:rounded-xl sm:w-[380px] sm:max-w-[95vw] sm:mx-auto sm:left-auto sm:p-4' +
           ' transition-transform duration-300' +
-          (isClosing ? ' animate-slidedown sm:animate-none' : ' animate-slideup sm:animate-none')
+          (isClosing
+            ? ' animate-slidedown sm:animate-none'
+            : ' animate-slideup sm:animate-none')
         }
         onSubmit={handleSubmit}
       >
-        <div className='relative'>
-          <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">{isEdit ? 'Edit message' : 'New message'}</h3>
+        <div className="relative">
+          <h3 className="text-lg font-bold relative after:content-[''] after:absolute after:top-auto after:-bottom-2 after:-left-4 after:-right-4 after:h-[1px] after:bg-gray-300">
+            {isEdit ? 'Edit message' : 'New message'}
+          </h3>
           {onCancel && (
             <button
               onClick={handleClose}
-              type='button'
-              className='absolute top-2 sm:top-0 right-2 hover:opacity-50 cursor-pointer hover:transition-opacity'
+              type="button"
+              className="absolute top-2 sm:top-0 right-2 hover:opacity-50 cursor-pointer hover:transition-opacity"
             >
               <img src="/assets/close-x.svg" alt="close window" />
             </button>
           )}
         </div>
-        <div className='relative mt-2'>
-          <label className='absolute left-2 -top-2 text-xs bg-white px-1' htmlFor="formTitle">Title</label>
+        <div className="relative mt-2">
+          <label
+            className="absolute left-2 -top-2 text-xs bg-white px-1"
+            htmlFor="formTitle"
+          >
+            Title
+          </label>
           <input
-            id='formTitle'
+            id="formTitle"
             className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 transition-colors duration-200 w-full sm:w-auto"
             placeholder="Title"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
@@ -89,16 +108,17 @@ const PostForm: FC<PostFormProps> = ({ initialData = {}, onSubmit, onCancel, isE
           className="border border-gray-300 hover:border-gray-100 outline outline-transparent focus:outline-primary-400 rounded px-2 py-1 min-h-[76px] transition-colors duration-200 w-full sm:w-[342px]"
           placeholder="Description"
           value={content}
-          onChange={e => setContent(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
           required
         />
         {error && <span className="text-red-500 text-sm">{error}</span>}
         <button
           type="submit"
-          className={`py-1 w-full sm:rounded rounded-full transition-colors text-white ${title.trim() && content.trim()
-            ? 'bg-primary-400 hover:bg-primary-600 cursor-pointer'
-            : 'bg-primary-100 cursor-not-allowed'
-            }`}
+          className={`py-1 w-full sm:rounded rounded-full transition-colors text-white ${
+            title.trim() && content.trim()
+              ? 'bg-primary-400 hover:bg-primary-600 cursor-pointer'
+              : 'bg-primary-100 cursor-not-allowed'
+          }`}
           disabled={!title.trim() || !content.trim()}
         >
           {isEdit ? 'Save' : 'Create'}

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { FC, useState, useEffect } from 'react';
 import Header from './components/Header.tsx';
@@ -10,9 +10,9 @@ import { PostData } from './types';
 
 // Utility: getNow (date/time helper)
 /**
-* Returns the current date and time in the required format for posts.
-* @returns An object with date (DD.MM.YY) and time (HH:mm) strings.
-*/
+ * Returns the current date and time in the required format for posts.
+ * @returns An object with date (DD.MM.YY) and time (HH:mm) strings.
+ */
 const getNow = () => {
   const now = new Date();
   const pad = (n: number) => n.toString().padStart(2, '0');
@@ -62,7 +62,10 @@ const Home: FC = () => {
    * Creates a new post and adds it to the top of the posts list.
    * @param data - The title and content for the new post.
    */
-  const handleCreate = (data: { title: string; content: string | string[] }) => {
+  const handleCreate = (data: {
+    title: string;
+    content: string | string[];
+  }) => {
     const now = getNow();
     setPosts([
       {
@@ -89,20 +92,23 @@ const Home: FC = () => {
    * Updates an existing post with new data.
    * @param data - The updated title and content for the post.
    */
-  const handleUpdate = (data: { title: string; content: string | string[] }) => {
+  const handleUpdate = (data: {
+    title: string;
+    content: string | string[];
+  }) => {
     if (editIdx === null) return;
     const now = getNow();
-    setPosts(posts =>
+    setPosts((posts) =>
       posts.map((post, idx) =>
         idx === editIdx
           ? {
-            ...post,
-            title: data.title,
-            content: data.content,
-            dateEdit: now.date,
-            timeEdit: now.time,
-            edit: true,
-          }
+              ...post,
+              title: data.title,
+              content: data.content,
+              dateEdit: now.date,
+              timeEdit: now.time,
+              edit: true,
+            }
           : post
       )
     );
@@ -114,7 +120,7 @@ const Home: FC = () => {
    * @param idx - The index of the post to delete.
    */
   const handleDelete = (idx: number) => {
-    setPosts(posts => posts.filter((_, i) => i !== idx));
+    setPosts((posts) => posts.filter((_, i) => i !== idx));
   };
 
   return (
@@ -122,7 +128,10 @@ const Home: FC = () => {
       <Header onNewPost={() => setShowForm(true)} />
       <Main>
         {showForm && (
-          <PostForm onSubmit={handleCreate} onCancel={() => setShowForm(false)} />
+          <PostForm
+            onSubmit={handleCreate}
+            onCancel={() => setShowForm(false)}
+          />
         )}
         {editIdx !== null && (
           <PostForm
@@ -132,7 +141,9 @@ const Home: FC = () => {
             isEdit
           />
         )}
-        <div className={`flex flex-col gap-4 pointer-events-auto ${(showForm || (editIdx !== null)) && 'pointer-events-none'}`}>
+        <div
+          className={`flex flex-col gap-4 pointer-events-auto ${(showForm || editIdx !== null) && 'pointer-events-none'}`}
+        >
           {posts.map((post, idx) => {
             const isOpen = openOptionsIdx === idx;
             return (
@@ -140,7 +151,9 @@ const Home: FC = () => {
                 <Post
                   postData={post}
                   isOptionsOpen={isOpen}
-                  setIsOptionsOpen={(open) => setOpenOptionsIdx(open ? idx : null)}
+                  setIsOptionsOpen={(open) =>
+                    setOpenOptionsIdx(open ? idx : null)
+                  }
                 >
                   {isOpen && (
                     <>
@@ -154,7 +167,7 @@ const Home: FC = () => {
                           }}
                           aria-label="Edit post"
                         >
-                          <img src="./assets/pencil-edit.svg" alt='edit' />
+                          <img src="./assets/pencil-edit.svg" alt="edit" />
                           Edit
                         </button>
                         <button
@@ -165,7 +178,7 @@ const Home: FC = () => {
                           }}
                           aria-label="Delete post"
                         >
-                          <img src="./assets/trash.svg" alt='delete' />
+                          <img src="./assets/trash.svg" alt="delete" />
                           Delete
                         </button>
                       </div>
@@ -173,13 +186,24 @@ const Home: FC = () => {
                       <div
                         className={`sm:hidden fixed inset-0 z-50 grid bg-primary-modal backdrop-blur-xs transition-all duration-300`}
                       >
-                        {openOptionsIdx === idx && openOptionsIdx !== null && openOptionsIdx === idx && posts[idx]?.showDeleteConfirm ? (
-                          <div className={`flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto animate-slideup`}>
-                            <div className='grid place-content-center w-12 h-12 mr-auto mb-2 p-3 aspect-square bg-red-300 rounded-full'>
+                        {openOptionsIdx === idx &&
+                        openOptionsIdx !== null &&
+                        openOptionsIdx === idx &&
+                        posts[idx]?.showDeleteConfirm ? (
+                          <div
+                            className={`flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto animate-slideup`}
+                          >
+                            <div className="grid place-content-center w-12 h-12 mr-auto mb-2 p-3 aspect-square bg-red-300 rounded-full">
                               <img src="/assets/warning.svg" alt="Warning" />
                             </div>
-                            <div className='font-bold text-left'>Delete message?</div>
-                            <div className="font-md text-left">Are you sure you want to delete the message? Once the message is deleted, it can not be restored or accessed again</div>
+                            <div className="font-bold text-left">
+                              Delete message?
+                            </div>
+                            <div className="font-md text-left">
+                              Are you sure you want to delete the message?
+                              Once the message is deleted, it can not be
+                              restored or accessed again
+                            </div>
                             <div className="flex flex-col gap-4 w-full mt-2">
                               <button
                                 className="flex-1 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-medium transition-colors"
@@ -193,7 +217,13 @@ const Home: FC = () => {
                               <button
                                 className="flex-1 py-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium transition-colors"
                                 onClick={() => {
-                                  setPosts(posts => posts.map((p, i) => i === idx ? { ...p, showDeleteConfirm: false } : p));
+                                  setPosts((posts) =>
+                                    posts.map((p, i) =>
+                                      i === idx
+                                        ? { ...p, showDeleteConfirm: false }
+                                        : p
+                                    )
+                                  );
                                 }}
                               >
                                 Cancel
@@ -212,17 +242,26 @@ const Home: FC = () => {
                               }}
                               aria-label="Edit post"
                             >
-                              <img src="./assets/pencil-edit.svg" alt='edit' />
+                              <img
+                                src="./assets/pencil-edit.svg"
+                                alt="edit"
+                              />
                               Edit
                             </button>
                             <button
                               className="flex gap-2 rounded text-red-700 hover:opacity-50 transition-opacity cursor-pointer"
                               onClick={() => {
-                                setPosts(posts => posts.map((p, i) => i === idx ? { ...p, showDeleteConfirm: true } : p));
+                                setPosts((posts) =>
+                                  posts.map((p, i) =>
+                                    i === idx
+                                      ? { ...p, showDeleteConfirm: true }
+                                      : p
+                                  )
+                                );
                               }}
                               aria-label="Delete post"
                             >
-                              <img src="./assets/trash.svg" alt='delete' />
+                              <img src="./assets/trash.svg" alt="delete" />
                               Delete
                             </button>
                             <button
@@ -230,7 +269,10 @@ const Home: FC = () => {
                               className="absolute top-3 right-3 hover:opacity-50 cursor-pointer hover:transition-opacity z-10"
                               aria-label="Close options"
                             >
-                              <img src="/assets/close-x.svg" alt="close options" />
+                              <img
+                                src="/assets/close-x.svg"
+                                alt="close options"
+                              />
                             </button>
                           </div>
                         )}
