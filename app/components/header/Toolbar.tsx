@@ -16,14 +16,14 @@ const Toolbar = ({ onNewPost }: HeaderProps) => {
           aria-label="add new post"
           onClick={onNewPost}
         >
-          <span className="sm:scale-175 origin-center relative -top-[4px]">+</span>
+          <span className="sm:scale-175 origin-center relative sm:-top-[2px]">+</span>
           <span className="hidden sm:inline-block">New Message</span>
         </button>
         <div className='relative hidden sm:inline-block bg-gray-100 py-[8px] px-[24px] rounded-full cursor-not-allowed' aria-label="search through posts">
           <input type="text" placeholder='Search' className='peer placeholder:px-[20px] focus:placeholder:opacity-0 outline-none cursor-not-allowed' maxLength={32} />
           <img className='absolute top-[12px] left-[12px] peer-focus:opacity-0' src="./assets/search.svg" alt="click to search" />
         </div>
-        <button className='flex align-middle cursor-not-allowed w-2'>
+        <button className='flex align-middle cursor-not-allowed w-2 relative top-1 sm:top-0'>
           <img className="inline-block" src="./assets/sort-selector.svg" alt="sort items" />
         </button >
       </div>
