@@ -31,6 +31,7 @@ const Home: FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editIdx, setEditIdx] = useState<number | null>(null);
   const [openOptionsIdx, setOpenOptionsIdx] = useState<number | null>(null);
+  const [showDeleteConfirmIdx, setShowDeleteConfirmIdx] = useState<number | null>(null); // NEW STATE
 
   // Effects: Load and persist posts
   /**
@@ -189,7 +190,7 @@ const Home: FC = () => {
                         {openOptionsIdx === idx &&
                         openOptionsIdx !== null &&
                         openOptionsIdx === idx &&
-                        posts[idx]?.showDeleteConfirm ? (
+                        showDeleteConfirmIdx === idx ? (
                           <div
                             className={`flex flex-col gap-4 p-3 relative bg-white shadow-md rounded-t-xl w-full max-w-full mt-auto animate-slideup`}
                           >
@@ -217,13 +218,7 @@ const Home: FC = () => {
                               <button
                                 className="flex-1 py-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium transition-colors"
                                 onClick={() => {
-                                  setPosts((posts) =>
-                                    posts.map((p, i) =>
-                                      i === idx
-                                        ? { ...p, showDeleteConfirm: false }
-                                        : p
-                                    )
-                                  );
+                                  setShowDeleteConfirmIdx(null);
                                 }}
                               >
                                 Cancel
@@ -251,13 +246,7 @@ const Home: FC = () => {
                             <button
                               className="flex gap-2 rounded text-red-700 hover:opacity-50 transition-opacity cursor-pointer"
                               onClick={() => {
-                                setPosts((posts) =>
-                                  posts.map((p, i) =>
-                                    i === idx
-                                      ? { ...p, showDeleteConfirm: true }
-                                      : p
-                                  )
-                                );
+                                setShowDeleteConfirmIdx(idx);
                               }}
                               aria-label="Delete post"
                             >

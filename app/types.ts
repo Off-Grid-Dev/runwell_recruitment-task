@@ -11,7 +11,6 @@
  * @property timeEdit - The time the post was last edited (HH:mm).
  * @property content - The main content of the post, as a string or array of strings (lines).
  * @property edit - Whether the post has been edited since creation.
- * @property showDeleteConfirm - (Mobile only) Whether to show the delete confirmation modal for this post.
  */
 export interface PostData {
   title: string;
@@ -21,7 +20,7 @@ export interface PostData {
   timeEdit: string;
   content: string | string[];
   edit: boolean;
-  showDeleteConfirm?: boolean;
+  // showDeleteConfirm removed; now handled in state as recommended in interview
 }
 
 /**
